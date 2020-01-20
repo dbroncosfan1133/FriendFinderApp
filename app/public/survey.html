@@ -9,9 +9,8 @@
     <!-- <link rel="stylesheet" type="text/css" href="css/reset.css"> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <!-- <link rel="stylesheet" type="text/css" href="css/main.css"> -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <title>Friend Finder</title>
 </head>
@@ -22,30 +21,36 @@
         <h1 class="title is-2">Survey Questions</h1>
         <hr>
         <div class="field">
-            <label class="label"><h3 class="subtitle is-4 has-text-weight-bold">About You</h3></label>
-            <label class="label"><h3 class="subtitle is-5 has-text-weight-medium">Name (Required)</h3></label>
+            <label class="label">
+                <h3 class="subtitle is-4 has-text-weight-bold">About You</h3>
+            </label>
+            <label class="label">
+                <h3 class="subtitle is-5 has-text-weight-medium">Name (Required):</h3>
+            </label>
             <div class="control">
-                <input class="input" type="text" placeholder="Enter Your Name..">
+                <input class="input" id="name" type="text" placeholder="Enter Your Name..">
             </div>
         </div>
         <div class="field">
-            <label class="label"><h3 class="subtitle is-5 has-text-weight-medium">Link to a Photo Image (Required):</h3></label>
+            <label class="label">
+                <h3 class="subtitle is-5 has-text-weight-medium">Link to a Photo Image (Required):</h3>
+            </label>
             <div class="control">
-                <input class="input" type="text" placeholder="Enter a Photo link..">
+                <input class="input" id="photoURL" type="text" placeholder="Enter a Photo link..">
             </div>
         </div>
         <hr>
         <div class="field">
             <h3 class="subtitle is-4 has-text-weight-bold">Question 1</h3>
             <h3 class="subtitle is-5">Your mind is always buzzing with unexplored ideas and plans.</h3>
-            <div class="select" id="question1">
-                <select>
-                    <option>Select rating</option>
-                    <option>1 (Strongly Disagree)</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5 (Strongly Agree)</option>
+            <div class="select">
+                <select class="questions" id="question1">
+                    <option value="">Select rating</option value="0">
+                    <option value="1">1 (Strongly Disagree)</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 (Strongly Agree)</option>
                 </select>
             </div>
         </div>
@@ -53,14 +58,14 @@
             <h3 class="subtitle is-4 has-text-weight-bold">Question 2</h3>
             <h3 class="subtitle is-5">Generally speaking, you rely more on your experience than your imagination.
             </h3>
-            <div class="select" id="question2">
-                <select>
-                    <option>Select rating</option>
-                    <option>1 (Strongly Disagree)</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5 (Strongly Agree)</option>
+            <div class="select">
+                <select class="questions" id="question2">
+                    <option value="">Select rating</option value="0">
+                    <option value="1">1 (Strongly Disagree)</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 (Strongly Agree)</option>
                 </select>
             </div>
         </div>
@@ -68,14 +73,14 @@
             <h3 class="subtitle is-4 has-text-weight-bold">Question 3</h3>
             <h3 class="subtitle is-5">You find it easy to stay relaxed and focused even when there is some pressure.
             </h3>
-            <div class="select" id="question3">
-                <select>
-                    <option>Select rating</option>
-                    <option>1 (Strongly Disagree)</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5 (Strongly Agree)</option>
+            <div class="select">
+                <select class="questions" id="question3">
+                    <option value="">Select rating</option value="0">
+                    <option value="1">1 (Strongly Disagree)</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 (Strongly Agree)</option>
                 </select>
             </div>
         </div>
@@ -83,14 +88,14 @@
             <h3 class="subtitle is-4 has-text-weight-bold">Question 4</h3>
             <h3 class="subtitle is-5">You rarely do something just out of sheer curiosity.
             </h3>
-            <div class="select" id="question4">
-                <select>
-                    <option>Select rating</option>
-                    <option>1 (Strongly Disagree)</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5 (Strongly Agree)</option>
+            <div class="select">
+                <select class="questions" id="question4">
+                    <option value="">Select rating</option value="0">
+                    <option value="1">1 (Strongly Disagree)</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 (Strongly Agree)</option>
                 </select>
             </div>
         </div>
@@ -98,14 +103,14 @@
             <h3 class="subtitle is-4 has-text-weight-bold">Question 5</h3>
             <h3 class="subtitle is-5">People can rarely upset you.
             </h3>
-            <div class="select" id="question5">
-                <select>
-                    <option>Select rating</option>
-                    <option>1 (Strongly Disagree)</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5 (Strongly Agree)</option>
+            <div class="select">
+                <select class="questions" id="question5">
+                    <option value="">Select rating</option>
+                    <option value="1">1 (Strongly Disagree)</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 (Strongly Agree)</option>
                 </select>
             </div>
         </div>
@@ -113,14 +118,14 @@
             <h3 class="subtitle is-4 has-text-weight-bold">Question 6</h3>
             <h3 class="subtitle is-5">It is often difficult for you to relate to other people’s feelings.
             </h3>
-            <div class="select" id="question6">
-                <select>
-                    <option>Select rating</option>
-                    <option>1 (Strongly Disagree)</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5 (Strongly Agree)</option>
+            <div class="select">
+                <select class="questions" id="question6">
+                    <option value="">Select rating</option value="0">
+                    <option value="1">1 (Strongly Disagree)</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 (Strongly Agree)</option>
                 </select>
             </div>
         </div>
@@ -128,14 +133,14 @@
             <h3 class="subtitle is-4 has-text-weight-bold">Question 7</h3>
             <h3 class="subtitle is-5">In a discussion, truth should be more important than people’s sensitivities.
             </h3>
-            <div class="select" id="question7">
-                <select>
-                    <option>Select rating</option>
-                    <option>1 (Strongly Disagree)</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5 (Strongly Agree)</option>
+            <div class="select">
+                <select class="questions" id="question7">
+                    <option value="">Select rating</option value="0">
+                    <option value="1">1 (Strongly Disagree)</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 (Strongly Agree)</option>
                 </select>
             </div>
         </div>
@@ -143,14 +148,14 @@
             <h3 class="subtitle is-4 has-text-weight-bold">Question 8</h3>
             <h3 class="subtitle is-5">You rarely get carried away by fantasies and ideas.
             </h3>
-            <div class="select" id="question8">
-                <select>
-                    <option>Select rating</option>
-                    <option>1 (Strongly Disagree)</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5 (Strongly Agree)</option>
+            <div class="select">
+                <select class="questions" id="question8">
+                    <option value="">Select rating</option value="0">
+                    <option value="1">1 (Strongly Disagree)</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 (Strongly Agree)</option>
                 </select>
             </div>
         </div>
@@ -159,14 +164,14 @@
             <h3 class="subtitle is-5">You think that everyone’s views should be respected regardless of whether they are
                 supported by facts or not.
             </h3>
-            <div class="select" id="question9">
-                <select>
-                    <option>Select rating</option>
-                    <option>1 (Strongly Disagree)</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5 (Strongly Agree)</option>
+            <div class="select">
+                <select class="questions" id="question9">
+                    <option value="">Select rating</option value="0">
+                    <option value="1">1 (Strongly Disagree)</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 (Strongly Agree)</option>
                 </select>
             </div>
         </div>
@@ -174,27 +179,27 @@
             <h3 class="subtitle is-4 has-text-weight-bold">Question 10</h3>
             <h3 class="subtitle is-5">You feel more energetic after spending time with a group of people.
             </h3>
-            <div class="select" id="question10">
-                <select>
-                    <option>Select rating</option>
-                    <option>1 (Strongly Disagree)</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5 (Strongly Agree)</option>
+            <div class="select">
+                <select class="questions" id="question10">
+                    <option value="">Select rating</option>
+                    <option value="1">1 (Strongly Disagree)</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 (Strongly Agree)</option>
                 </select>
             </div>
         </div>
         <div class="field">
             <div class="control">
-                <button class="button is-success is-fullwidth">
+                <button class="button is-success is-fullwidth" id="submitSurvey">
                     <h4><i class="fas fa-user-check fa-fw" aria-hidden="true"></i> Submit</h4>
                 </button>
             </div>
         </div>
         <div class="field">
             <div class="control">
-                <button class="button is-danger is-light is-fullwidth">
+                <button class="button is-danger is-light is-fullwidth" id="cancel" onclick="location.href='/'">
                     <h4><i class="fas fa-window-close" aria-hidden="true"></i> Cancel</h4>
                 </button>
             </div>
@@ -215,6 +220,70 @@
                 </section>
             </div>
         </div>
+    </div>
+    <script type="text/javascript">
+        $("#submitSurvey").on("click", function (event) {
+            event.preventDefault();
+
+            function formRequire() {
+                var validate = true;
+                $(".input").each(function () {
+                    if ($(this).val() === "") {
+                        validate = false;
+                    }
+                });
+
+                $(".questions").each(function () {
+                    if ($(this).val() === "") {
+                        validate = false;
+                    }
+                });
+                return validate;
+
+            }
+
+            if (formRequire()) {
+                var newSurvey = {
+                    name: $("#name").val().trim(),
+                    photo: $("#photoURL").val().trim(),
+                    questions: [
+                        $("#question1").val(),
+                        $("#question2").val(),
+                        $("#question3").val(),
+                        $("#question4").val(),
+                        $("#question5").val(),
+                        $("#question6").val(),
+                        $("#question7").val(),
+                        $("#question8").val(),
+                        $("#question9").val(),
+                        $("#question10").val()
+                    ]
+                };
+
+                $.post("/api/friends", newSurvey)
+                    .then(function (data) {
+                        console.log("survey.html", data);
+                        alert("Checking for compatible friends")
+                    });
+                // Clear the form when submitting
+                $("#name").val("");
+                $("#photoURL").val("");
+                $("question1").val("");
+                $("question2").val("");
+                $("question3").val("");
+                $("question4").val("");
+                $("question5").val("");
+                $("question6").val("");
+                $("question7").val("");
+                $("question8").val("");
+                $("question9").val("");
+                $("question10").val("");
+
+            }
+
+        });
+    </script>
+
 </body>
 
 </html>

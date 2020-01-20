@@ -30,12 +30,13 @@ app.get("/api/friends", function(req, res) {
 });
 
 //Create new friend
-app.post("/api/survey", function(req, res) {
+app.post("/api/friends", function(req, res) {
     
     var survey = req.body;
 
-    reservation.uniqueId.replace(/\s+/g, "").toLowerCase();
+    friends.push(survey);
     console.log(survey);
+    res.json(survey)
 });
 
 app.listen(PORT, function() {
