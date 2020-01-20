@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <base href="/">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <!-- <link rel="stylesheet" type="text/css" href="css/reset.css"> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <!-- <link rel="stylesheet" type="text/css" href="css/main.css"> -->
-    <script src="https://code.jquery.com/jquery-3.4.1.js"
-        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <title>Friend Finder</title>
 </head>
@@ -208,82 +208,79 @@
             <p><a href="/api/friends">API Friends List</a> | <a
                     href="https://github.com/dbroncosfan1133/FriendFinderApp">GitHub Repo</a></p>
         </div>
-        <div class="modal">
+        <div class="modal" id="friend_modal">
             <div class="modal-background"></div>
             <div class="modal-card">
                 <header class="modal-card-head">
-                    <p class="modal-card-title">Your Best Match</p>
+                    <p class="modal-card-title">Your New Friend!</p>
                     <button class="delete" aria-label="close"></button>
                 </header>
                 <section class="modal-card-body">
-                    <p id="results_here"></p>
+                    <h2 id="new_friend"></h2>
+                    <img id="friend_photo" src="#">
                 </section>
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-        $("#submitSurvey").on("click", function (event) {
-            event.preventDefault();
 
-            function formRequire() {
-                var validate = true;
-                $(".input").each(function () {
-                    if ($(this).val() === "") {
-                        validate = false;
-                    }
-                });
-
-                $(".questions").each(function () {
-                    if ($(this).val() === "") {
-                        validate = false;
-                    }
-                });
-                return validate;
-
-            }
-
-            if (formRequire()) {
-                var newSurvey = {
-                    name: $("#name").val().trim(),
-                    photo: $("#photoURL").val().trim(),
-                    questions: [
-                        $("#question1").val(),
-                        $("#question2").val(),
-                        $("#question3").val(),
-                        $("#question4").val(),
-                        $("#question5").val(),
-                        $("#question6").val(),
-                        $("#question7").val(),
-                        $("#question8").val(),
-                        $("#question9").val(),
-                        $("#question10").val()
-                    ]
-                };
-
-                $.post("/api/friends", newSurvey)
-                    .then(function (data) {
-                        console.log("survey.html", data);
-                        alert("Checking for compatible friends")
-                    });
-                // Clear the form when submitting
-                $("#name").val("");
-                $("#photoURL").val("");
-                $("question1").val("");
-                $("question2").val("");
-                $("question3").val("");
-                $("question4").val("");
-                $("question5").val("");
-                $("question6").val("");
-                $("question7").val("");
-                $("question8").val("");
-                $("question9").val("");
-                $("question10").val("");
-
-            }
-
-        });
-    </script>
 
 </body>
 
 </html>
+
+<script type="text/javascript">
+    $("#submitSurvey").on("click", function (event) {
+        event.preventDefault();
+
+        function formRequire() {
+            var validate = true;
+            $(".input").each(function () {
+                if ($(this).val() === "") {
+                    validate = false;
+                }
+            });
+
+            $(".questions").each(function () {
+                if ($(this).val() === "") {
+                    validate = false;
+                }
+            });
+            return validate;
+
+        }
+
+        if (formRequire()) {
+            var newSurvey = {
+                name: $("#name").val().trim(),
+                photo: $("#photoURL").val().trim(),
+                questions: [
+                    $("#question1").val(),
+                    $("#question2").val(),
+                    $("#question3").val(),
+                    $("#question4").val(),
+                    $("#question5").val(),
+                    $("#question6").val(),
+                    $("#question7").val(),
+                    $("#question8").val(),
+                    $("#question9").val(),
+                    $("#question10").val()
+                ]
+            };
+
+            var currentURL = window.location.origin;
+
+            $.post(currentURL + "/api/friends", newSurvey, function (data) {
+                alert("Checking for compatible friends");
+                $("#new_friend").text(data.name);
+                $("#friend_photo").attr("src", data.photo);
+                $("#friend_modal").modal("toggle");
+
+            });
+            // Clear the form when submitting
+            $("#name").val("");
+            $("#photoURL").val("");
+        } else {
+            alert("Please complete the survey!");
+        }
+    });
+</script>
