@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <base href="/">
     <script src="https://code.jquery.com/jquery-3.4.1.js"
-    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <!-- <link rel="stylesheet" type="text/css" href="css/reset.css"> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <!-- <link rel="stylesheet" type="text/css" href="css/main.css"> -->
@@ -208,10 +208,11 @@
             <p><a href="/api/friends">API Friends List</a> | <a
                     href="https://github.com/dbroncosfan1133/FriendFinderApp">GitHub Repo</a></p>
         </div>
+
         <div class="modal" id="friend_modal">
             <div class="modal-background"></div>
             <div class="modal-card">
-                <header class="modal-card-head">
+                <header class="modal-card-head" id="span_area">
                     <p class="modal-card-title">Your New Friend!</p>
                     <button class="delete" aria-label="close"></button>
                 </header>
@@ -232,28 +233,25 @@
     $("#submitSurvey").on("click", function (event) {
         event.preventDefault();
 
-        function formRequire() {
-            var validate = true;
-            $(".input").each(function () {
-                if ($(this).val() === "") {
-                    validate = false;
-                }
-            });
+        var validate = true;
 
-            $(".questions").each(function () {
-                if ($(this).val() === "") {
-                    validate = false;
-                }
-            });
-            return validate;
+        $(".input").each(function () {
+            if ($(this).val() === "") {
+                validate = false;
+            }
+        });
 
-        }
+        $(".questions").each(function () {
+            if ($(this).val() === "") {
+                validate = false;
+            }
+        });
 
-        if (formRequire()) {
+        if (validate === true) {
             var newSurvey = {
                 name: $("#name").val().trim(),
                 photo: $("#photoURL").val().trim(),
-                questions: [
+                scores: [
                     $("#question1").val(),
                     $("#question2").val(),
                     $("#question3").val(),
@@ -270,11 +268,28 @@
             var currentURL = window.location.origin;
 
             $.post(currentURL + "/api/friends", newSurvey, function (data) {
-                alert("Checking for compatible friends");
-                $("#new_friend").text(data.name);
-                $("#friend_photo").attr("src", data.photo);
-                $("#friend_modal").modal("toggle");
+                var modal = document.getElementById("friend_modal");
+                var btn = document.getElementById("submitSurvey");
+                var span = document.getElementById("span_area");
 
+                btn.onclick = function () {
+                    modal.style.display = "block";
+                }
+
+                span.onclick = function () {
+                    modal.style.display = "none";
+                }
+
+                window.onclick = function (event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+
+
+                // $("#new_friend").text(data.name);
+                // $("#friend_photo").attr("src", data.photo);
+                // $("#friend_modal").modal("toggle");
             });
             // Clear the form when submitting
             $("#name").val("");
